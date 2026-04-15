@@ -183,7 +183,8 @@ public class FrontTokenComponent {
                 "api/front/bargain/header",
                 "api/front/bargain/detail",
                 "api/front/seckill/header",
-                "api/front/seckill/detail"
+                "api/front/seckill/detail",
+                "api/front/brand/list"
         };
 
         return ArrayUtils.contains(routerList, uri);

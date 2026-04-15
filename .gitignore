@@ -35,6 +35,7 @@ build/
 /crmeb_log/log_info.log
 /crmeb_log/log_warn.log
 /crmeb_log/
+/crmeb_admin_log
 /.idea/
 src/main/java/com/zbkj/.DS_Store
 src/main/java/com/.DS_Store

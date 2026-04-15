@@ -8,7 +8,7 @@ crmeb:
   asyncConfig: true #是否同步config表数据到redis
   asyncWeChatProgramTempList: false #是否同步小程序公共模板库
   #  imagePath: /JAVA_PROJECT/SINGLE/demo/admin/ # 服务器图片路径配置 斜杠结尾
-  imagePath: /www/wwwroot/image/ # 服务器图片路径配置 斜杠结尾
+  imagePath: /www/wwwroot/image/ # 服务器图片路径配置 斜杠结尾（生产环境Linux路径）
   captchaOn: false # 是否开启行为验证码
   demoSite: true # 是否演示站点 所有手机号码都会掩码
 
@@ -25,14 +25,14 @@ spring:
       max-request-size: 50MB #设置单次请求文件的总大小
     #  数据库配置
   datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://111.229.103.222:13306/java_demo?characterEncoding=utf-8&useSSL=false&serverTimeZone=GMT+8
-    username: root
-    password: e7TEkM2scYjNzcTz
+    url: jdbc:mysql://111.229.103.222:13306/crmeb-java-beta?serverTimezone=UTC
+    username: crmeb-java-beta
+    password: eXwKFnzf44RrGG7E
   redis:
     host: 111.229.103.222 #地址
-    port: 6379 #端口
+    port: 26739 #端口
     password: Mmw2xmtym74wpSGK
     timeout: 10000 # 连接超时时间（毫秒）
     database: 4 #默认数据库
