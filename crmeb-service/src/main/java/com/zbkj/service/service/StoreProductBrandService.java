@@ -48,6 +48,11 @@ public interface StoreProductBrandService extends IService<StoreProductBrand> {
     Boolean updateStatus(Integer id);
 
     /**
+     * 品牌列表（不分页，支持过滤）
+     */
+    List<StoreProductBrand> getList(StoreProductBrandSearchRequest request);
+
+    /**
      * 移动端品牌列表（仅启用状态）
      */
     List<StoreProductBrand> getFrontList();

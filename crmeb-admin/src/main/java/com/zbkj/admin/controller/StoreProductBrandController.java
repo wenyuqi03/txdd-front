@@ -15,6 +15,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
+
+
+
+
 import java.util.List;
 
 /**
@@ -48,16 +53,16 @@ public class StoreProductBrandController {
     }
 
     @PreAuthorize("hasAuthority('admin:product:brand:list')")
-    @ApiOperation(value = "品牌全部列表")
+    @ApiOperation(value = "品牌列表（不分页）")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public CommonResult<List<StoreProductBrand>> getAll() {
-        return CommonResult.success(storeProductBrandService.list());
+    public CommonResult<List<StoreProductBrand>> getAll(@Validated StoreProductBrandSearchRequest request) {
+        return CommonResult.success(storeProductBrandService.getList(request));
     }
 
     @PreAuthorize("hasAuthority('admin:product:brand:save')")
     @ApiOperation(value = "新增品牌")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public CommonResult<String> save(@Validated StoreProductBrandRequest request) {
+    public CommonResult<String> save( @Validated StoreProductBrandRequest request) {
         if (storeProductBrandService.add(request)) {
             return CommonResult.success();
         } else {
@@ -68,7 +73,7 @@ public class StoreProductBrandController {
     @PreAuthorize("hasAuthority('admin:product:brand:update')")
     @ApiOperation(value = "修改品牌")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public CommonResult<String> update(@RequestParam Integer id, @Validated StoreProductBrandRequest request) {
+    public CommonResult<String> update(@RequestParam Integer id, @RequestBody @Validated StoreProductBrandRequest request) {
         if (storeProductBrandService.update(id, request)) {
             return CommonResult.success();
         } else {

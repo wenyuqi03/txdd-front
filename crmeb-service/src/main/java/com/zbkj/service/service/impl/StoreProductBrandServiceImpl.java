@@ -97,6 +97,19 @@ public class StoreProductBrandServiceImpl extends ServiceImpl<StoreProductBrandD
     }
 
     @Override
+    public List<StoreProductBrand> getList(StoreProductBrandSearchRequest request) {
+        LambdaQueryWrapper<StoreProductBrand> wrapper = new LambdaQueryWrapper<>();
+        if (StrUtil.isNotBlank(request.getBrandName())) {
+            wrapper.like(StoreProductBrand::getBrandName, request.getBrandName());
+        }
+        if (request.getStatus() != null) {
+            wrapper.eq(StoreProductBrand::getStatus, request.getStatus());
+        }
+        wrapper.orderByDesc(StoreProductBrand::getId);
+        return dao.selectList(wrapper);
+    }
+
+    @Override
     public List<StoreProductBrand> getFrontList() {
         LambdaQueryWrapper<StoreProductBrand> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(StoreProductBrand::getStatus, 1);
