@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.zbkj.common.exception.CrmebException;
+import com.zbkj.common.model.category.Category;
 import com.zbkj.common.model.product.StoreProductBrand;
 import com.zbkj.common.request.PageParamRequest;
 import com.zbkj.common.request.StoreProductBrandRequest;
@@ -115,6 +116,13 @@ public class StoreProductBrandServiceImpl extends ServiceImpl<StoreProductBrandD
         wrapper.eq(StoreProductBrand::getStatus, 1);
         wrapper.orderByDesc(StoreProductBrand::getId);
         return dao.selectList(wrapper);
+    }
+
+    @Override
+    public List<StoreProductBrand> getByIds(List<Integer> idList) {
+        LambdaQueryWrapper<StoreProductBrand> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.in(StoreProductBrand::getId, idList);
+        return dao.selectList(lambdaQueryWrapper);
     }
 
 }

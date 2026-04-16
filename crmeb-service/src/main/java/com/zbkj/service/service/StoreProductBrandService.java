@@ -1,6 +1,7 @@
 package com.zbkj.service.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zbkj.common.model.category.Category;
 import com.zbkj.common.model.product.StoreProductBrand;
 import com.zbkj.common.request.PageParamRequest;
 import com.zbkj.common.request.StoreProductBrandRequest;
@@ -56,5 +57,7 @@ public interface StoreProductBrandService extends IService<StoreProductBrand> {
      * 移动端品牌列表（仅启用状态）
      */
     List<StoreProductBrand> getFrontList();
+
+    List<StoreProductBrand> getByIds(List<Integer> ids);
 
 }

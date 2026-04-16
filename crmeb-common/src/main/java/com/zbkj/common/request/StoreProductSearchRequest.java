@@ -40,6 +40,9 @@ public class StoreProductSearchRequest implements Serializable {
     @ApiModelProperty(value = "分类ID， 多个逗号分隔")
     private String cateId;
 
+    @ApiModelProperty(value = "所属品牌id")
+    private Integer brandId;
+
     @ApiModelProperty(value = "关键字搜索， 支持(商品名称, 关键字, 商品条码)")
     private String keywords;
 

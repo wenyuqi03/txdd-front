@@ -3,6 +3,7 @@ package com.zbkj.common.response;
 import com.zbkj.common.model.product.StoreProductAttr;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -53,6 +54,9 @@ public class StoreProductInfoResponse implements Serializable {
 
     @ApiModelProperty(value = "分类中文")
     private String cateStr;
+
+    @ApiModelProperty(value = "所属品牌id")
+    private Integer brandId;
 
     @ApiModelProperty(value = "单位名")
     private String unitName;

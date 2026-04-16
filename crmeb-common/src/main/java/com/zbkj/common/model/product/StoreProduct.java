@@ -62,6 +62,9 @@ public class StoreProduct implements Serializable {
     @ApiModelProperty(value = "分类id")
     private String cateId;
 
+    @ApiModelProperty(value = "品牌id")
+    private Integer brandId;
+
     @ApiModelProperty(value = "商品价格")
     private BigDecimal price;
 

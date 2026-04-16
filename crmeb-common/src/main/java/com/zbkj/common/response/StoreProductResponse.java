@@ -67,6 +67,12 @@ public class StoreProductResponse implements Serializable {
     @ApiModelProperty(value = "分类中文")
     private String cateValues;
 
+    @ApiModelProperty(value = "所属品牌id")
+    private String brandId;
+
+    @ApiModelProperty(value = "所属品牌中文")
+    private String brandName;
+
     @ApiModelProperty(value = "商品价格")
     private BigDecimal price;
 

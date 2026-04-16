@@ -63,6 +63,10 @@ public class StoreProductAddRequest implements Serializable {
     @NotBlank(message = "关键字不能为空")
     private String keyword;
 
+    @ApiModelProperty(value = "所属品牌ID", required = true)
+    @NotNull(message = "所属品牌不能为空")
+    private Integer brandId;
+
     @ApiModelProperty(value = "分类id|逗号分隔", required = true)
     @NotBlank(message = "商品分类不能为空")
     @Length(max = 64, message = "商品分类组合长度不能超过64个字符")

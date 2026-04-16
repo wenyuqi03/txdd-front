@@ -86,6 +86,9 @@ public class StoreProductServiceImpl extends ServiceImpl<StoreProductDao, StoreP
     private CategoryService categoryService;
 
     @Autowired
+    private StoreProductBrandService storeProductBrandService;
+
+    @Autowired
     private StoreProductRelationService storeProductRelationService;
 
     @Autowired
@@ -182,6 +185,9 @@ public class StoreProductServiceImpl extends ServiceImpl<StoreProductDao, StoreP
             List<Integer> cateIds = Arrays.stream(request.getCateId().split(",")).map(Integer::valueOf).distinct().collect(Collectors.toList());
             lambdaQueryWrapper.in(StoreProduct::getCateId, cateIds);
         }
+        if(ObjectUtil.isNotNull(request.getBrandId())){
+            lambdaQueryWrapper.eq(StoreProduct::getBrandId, request.getBrandId());
+        }
         // 新增销量排行和价格排行
         if (StrUtil.isNotBlank(request.getSalesOrder())) {
             if (request.getSalesOrder().equals(Constants.SORT_DESC)) {
@@ -243,7 +249,13 @@ public class StoreProductServiceImpl extends ServiceImpl<StoreProductDao, StoreP
             } else {
                 storeProductResponse.setCateValues(cg.stream().map(Category::getName).collect(Collectors.joining(",")));
             }
-
+            // 处理所属品牌中文
+            List<StoreProductBrand> bd = storeProductBrandService.getByIds(CollUtil.newArrayList(product.getBrandId()));
+            if (CollUtil.isEmpty(bd)) {
+                storeProductResponse.setCateValues("");
+            } else {
+                storeProductResponse.setBrandName(bd.stream().map(StoreProductBrand::getBrandName).collect(Collectors.joining(",")));
+            }
             storeProductResponse.setCollectCount(
                     storeProductRelationService.getList(product.getId(),"collect").size());
             storeProductResponses.add(storeProductResponse);
