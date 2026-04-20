@@ -1211,7 +1211,9 @@ public class StoreProductServiceImpl extends ServiceImpl<StoreProductDao, StoreP
                     .or().like(StoreProduct::getKeyword, request.getKeyword()));
 //            }
         }
-
+        if(ObjectUtil.isNotNull(request.getBrandId())){
+            lqw.eq(StoreProduct::getBrandId, request.getBrandId());
+        }
         // 排序部分
         if (StrUtil.isNotBlank(request.getSalesOrder())) {
             if (request.getSalesOrder().equals(Constants.SORT_DESC)) {

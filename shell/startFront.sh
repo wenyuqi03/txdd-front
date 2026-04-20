@@ -2,7 +2,7 @@
 #开始时间 时间戳
 startTime=`date +'%Y-%m-%d %H:%M:%S'`
 #接口项目站点路径（目录按照各自配置）
-APP_PATH=/www/wwwroot/front-jar
+APP_PATH=/www/wwwroot/api.front.txdd.cloud
 #jar包文件名称
 APP_NAME=$APP_PATH/Crmeb-front.jar
 #日志文件名称
